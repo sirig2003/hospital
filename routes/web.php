@@ -20,7 +20,7 @@ Route::get('/home', [HomeController::class, 'redirect']);
 
 Route::get('/', [HomeController::class, 'index']);
 
-
+//Auth::route(['verify'=> true]);
 
 Route::middleware([
     'auth:sanctum',
