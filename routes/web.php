@@ -17,6 +17,18 @@ use App\Http\Controllers\AdminController;
 
 //Route::get('/home', [HomeController::class, 'redirect'])->middleware('auth','verified');
 
+Route::get('/clear', function() {
+
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+    Artisan::call('optimize:clear');
+
+    return "Cleared!";
+ 
+ });
+
 Route::get('/home', [HomeController::class, 'redirect']);
 Route::get('/users/export/', [UsersExportController::class, 'export']);
 
