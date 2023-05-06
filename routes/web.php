@@ -16,17 +16,16 @@ use App\Http\Controllers\AdminController;
 */
 
 //Route::get('/home', [HomeController::class, 'redirect'])->middleware('auth','verified');
+
 Route::get('/home', [HomeController::class, 'redirect']);
+Route::get('/users/export/', [UsersExportController::class, 'export']);
 
 Route::get('/', [HomeController::class, 'index']);
 
 //Auth::route(['verify'=> true]);
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])
+->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
@@ -47,4 +46,5 @@ Route::get('/updatedoctor/{id}',[AdminController::class, 'updatedoctor']);
 Route::post('/editdoctor/{id}',[AdminController::class, 'editdoctor']);
 Route::get('/emailview/{id}',[AdminController::class, 'emailview']);
 Route::post('/sendemail/{id}',[AdminController::class, 'sendemail']);
+
 

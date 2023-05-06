@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Doctor;
 use App\Models\Appointment;
 
+
 use Notification;
 use App\Notifications\SendEmailNotification;
 
@@ -36,15 +37,18 @@ class AdminController extends Controller
                 'phone' =>'required',
                 'specialty' =>'required',
                 'room' =>'required',
-                'image'=>'image|size:1024||dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000'
+                'image'=>'image|mimes:png,jpg,jpeg|max:2048'
         ]);
     
         $doctor= new doctor;
         $image= $request->image;
-        $imagename = time().'.'.$image->getClientOriginalExtension();
-        $image->move('doctorimage', $imagename);
 
-        $doctor->image = $imagename;
+        if ($image) {
+                $imagename = time().'.'.$image->getClientOriginalExtension();
+                $image->move('doctorimage', $imagename);
+                 $doctor->image = $imagename;
+        }
+        
         $doctor-> name = $request->name;
         $doctor-> phone = $request->phone;
         $doctor-> specialty = $request->specialty;
@@ -68,8 +72,17 @@ class AdminController extends Controller
         }else{
                 return redirect('login');
         }
-      
-        $appoints= appointment::all();
+        
+        if(request('search')){
+                $appoints= appointment::where('name', 'like', '%'.request('search').'%')
+                ->orwhere('date', 'like', '%'.request('search').'%') 
+                ->orwhere('status', 'like', '%'.request('search').'%')
+                ->get();
+        }else{
+              //$appoints= appointment::all();
+                $appoints= appointment::paginate(20);   
+        }
+       
         return view('admin.showappointment',compact('appoints'));
       
     }
@@ -101,8 +114,18 @@ class AdminController extends Controller
         }else{
                 return redirect('login');
         }
+
+
+        if(request('search')){
+                $viewdoc= doctor::where('name', 'like', '%'.request('search').'%')
+                ->orwhere('room', 'like', '%'.request('search').'%') 
+                -> get();
+        }else{
+                $viewdoc= doctor::paginate(20); 
+                //$viewdoc= doctor::all()->simplePaginate(3);
+        }
         
-        $viewdoc= doctor::all();
+       
         return view('admin.viewdoctors',compact('viewdoc'));
      }
 
@@ -125,8 +148,9 @@ class AdminController extends Controller
                 'name' =>'required|min:3|max:50',
                 'phone' =>'required',
                 'specialty' =>'required',
-                'room' =>'required|',
-                'image'=>'image|size:1024||dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000'
+                'room' =>'required',
+                'image'=>'image|mimes:png,jpg,jpeg|max:2048'
+
         ]);
 
         $doc= doctor::find($id);
@@ -153,7 +177,7 @@ class AdminController extends Controller
                 if(Auth::user()->usertype== 1){
                         $monkeygomarket= true;
                 }else{
-                        return redirect()->back()();
+                        return redirect()->back();
                 }
         }else{
                 return redirect('login');

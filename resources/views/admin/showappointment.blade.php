@@ -7,7 +7,7 @@
   </head>
   <body>
     <div class="container-scroller">
-      <div class="row p-0 m-0 proBanner" id="proBanner">
+      {{-- <div class="row p-0 m-0 proBanner" id="proBanner">
         <div class="col-md-12 p-0 m-0">
           <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
             <div class="ps-lg-1">
@@ -24,7 +24,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
       <!-- partial:partials/_sidebar.html -->
       @include('admin.sidebar')
       <!-- partial -->
@@ -48,7 +48,14 @@
                             <p class="card-description"> Table is scollable<code> (right/left)</code>
                             </p>
                             <div class="table-responsive">
-                              <table class="table table-bordered table-contextual">
+                              {{-- <form method="GET" action="/showappointment">
+                                <input type="search" class="form-control" name="search" 
+                                placeholder="Seach for patient" value="{{ request('search') }}">
+                              </form> --}}
+
+                              {{-- {{ mine_searchs(request('search'), "/showappointment", "Search for patient") }} --}}
+
+                              <table  id="viewdocs"  class="table table-bordered table-contextual display nowrap">
                                 <thead>
                                   <tr>                               
                                     <th>Custumer</th>
@@ -94,6 +101,16 @@
                                  
                                 </tbody>
                               </table>
+                              {{-- {{ mine_paginates(request('search'), $appoints)  }}
+                               --}}
+                              {{-- @if (request('search'))
+                                 
+                              @else
+                                <div class="d-flex justify-content-center">
+                                  {!! $appoints->links() !!}
+                                </div>
+                              @endif --}}
+                              
                             </div>
                           </div>
                         </div>
@@ -117,6 +134,7 @@
    
   
     @include('admin.script')
+    @extends('admin.excel')
     <!-- End custom js for this page -->
   </body>
 </html>

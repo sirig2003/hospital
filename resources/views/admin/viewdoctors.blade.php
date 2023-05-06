@@ -3,11 +3,14 @@
   <head>
     <!-- Required meta tags -->
     @include('admin.css')
-   
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css">
+
   </head>
   <body>
     <div class="container-scroller">
-      <div class="row p-0 m-0 proBanner" id="proBanner">
+      {{-- <div class="row p-0 m-0 proBanner" id="proBanner">
         <div class="col-md-12 p-0 m-0">
           <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
             <div class="ps-lg-1">
@@ -24,7 +27,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
       <!-- partial:partials/_sidebar.html -->
       @include('admin.sidebar')
       <!-- partial -->
@@ -48,7 +51,16 @@
                         <p class="card-description"> Table is scollable<code> (right/left)</code>
                         </p>
                         <div class="table-responsive">
-                          <table class="table table-bordered table-contextual">
+ {{-- search --}}
+                          {{-- <form method="GET" action="/viewdoctors">
+                            <input type="search" placeholder="Search for doctors" 
+                            class="form-control" name="search"
+                            value="{{ request('search') }}">
+                          </form> --}}
+
+                          {{-- {{ mine_searchs(request('search'), "/viewdoctors", "Search for doctors") }} --}}
+ {{-- end search --}}
+                          <table id="viewdocs" class="table table-bordered table-contextual">
                               <thead>
                                 <tr>
                                     <th>Doctor Name</th>
@@ -77,6 +89,19 @@
                              
                               </tbody>
                           </table>
+                        
+                          {{-- paginate --}}
+                          {{-- {{ mine_paginates(request('search'), $viewdoc) }} --}}
+                          
+                          {{-- @if (request('search'))
+ 
+                           @else
+                            <div class="d-flex justify-content-center">
+                              {!! $viewdoc->links() !!}
+                            </div>
+                          @endif --}}
+                           {{--end paginate --}}
+                          
                         </div>
                       </div>
                     </div>
@@ -97,6 +122,10 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
    @include('admin.script')
-    <!-- End custom js for this page -->
+
+    
+    <!-- create excel -->
+   @extends('admin.excel')
+    <!-- End create excel for this page -->
   </body>
 </html>

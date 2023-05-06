@@ -59,7 +59,7 @@
                 <a class="nav-link" href="contact.html">Contact</a>
             </li> --}}
 
-            @if (Route::has('login'))
+            {{-- @if (Route::has('login')) --}}
             @auth
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/myappointment') }}">View Appointment</a>
@@ -79,7 +79,7 @@
                     <a class="btn btn-primary ml-lg-3" href="{{route('register')}}">Register</a>
                 </li>
             @endauth
-            @endif
+            {{-- @endif --}}
       
           </ul>
         </div> <!-- .navbar-collapse -->
