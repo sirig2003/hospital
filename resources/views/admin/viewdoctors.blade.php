@@ -48,7 +48,7 @@
                     <div class="card">
                       <div class="card-body">
                         <h4 class="card-title">Doctor List</h4>
-                        <p class="card-description"> Table is scollable<code> (right/left)</code>
+                        <p class="card-description"> Table is scrollable<code> (right/left)</code>
                         </p>
                         <div class="table-responsive">
  {{-- search --}}
