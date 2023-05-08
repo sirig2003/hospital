@@ -37,8 +37,6 @@
         
         <!-- partial -->
 
-
-        
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="row">
@@ -107,9 +105,6 @@
                     </div>
                 </div>
 
-
-
-
                 </div>
             </div>
         </div>
@@ -123,7 +118,6 @@
     <!-- plugins:js -->
    @include('admin.script')
 
-    
     <!-- create excel -->
    @extends('admin.excel')
     <!-- End create excel for this page -->
