@@ -1,6 +1,6 @@
 APP_NAME=Hospital
 APP_ENV=localhost
-APP_KEY=base64:SoO9IlkOE4vDBpGYikplBNJN720oPE778Fivb926AsQ=
+APP_KEY=base64:SoO9IlkOEdddd4vDBpGYikplBNJN720oPE778Fivb926AsQ=
 APP_DEBUG=true
 APP_URL=http://localhost
 
@@ -11,9 +11,9 @@ LOG_LEVEL=debug
 DB_CONNECTION=mysql
 DB_HOST=localhost
 DB_PORT=3306
-DB_DATABASE=hospital
+DB_DATABASE=ttttt
 DB_USERNAME=root
-DB_PASSWORD=AmenAmen!2
+DB_PASSWORD=ttttt!2
 
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file
@@ -30,10 +30,10 @@ MEMCACHED_HOST=127.0.0.1
 
 #MAIL_MAILER=smtp
 MAIL_MAILER=log
-MAIL_HOST=smtp.gmail.com
+MAIL_HOST=smtp.indexportalglobe.com	
 MAIL_PORT=465
 MAIL_USERNAME=hello@indexportalglobe.com	
-MAIL_PASSWORD=Akanbi
+MAIL_PASSWORD=tttt
 MAIL_ENCRYPTION=ssl
 MAIL_FROM_ADDRESS=hello@indexportalglobe.com
 MAIL_FROM_NAME="From Hospital"
