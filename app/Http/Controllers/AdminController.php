@@ -67,7 +67,7 @@ class AdminController extends Controller
                 if(Auth::user()->usertype== 1){
                         $monkeygomarket= true;
                 }else{
-                        return redirect()->back()();
+                        return redirect()->back();
                 }
         }else{
                 return redirect('login');
@@ -155,10 +155,10 @@ class AdminController extends Controller
 
         $doc= doctor::find($id);
         
-        $doc->name  = $request-> name  ;
-        $doc->phone  = $request->phone   ;
-        $doc->specialty  = $request->specialty   ;
-        $doc->room  = $request->room   ;
+        $doc->name  = $request-> name ;
+        $doc->phone  = $request->phone ;
+        $doc->specialty  = $request->specialty ;
+        $doc->room  = $request->room ;
         
         $image= $request->image;
         if ($image) {
@@ -212,5 +212,73 @@ class AdminController extends Controller
 
      }
      
+//    start
+//      public function practice(){
+//         $sample= user::where(['name'=>'GAbriel'])->orWhere(['email'=>'gagga'])->update(['name'=>'Ameachi']);
+//         user::table('users')->avg();
+//         if($request->hasFile('file')){
+//                 $file= Storage->putFile($request('file'));
+//                 Request::ip();
+//         };
+//         cookie::put('key','value');
+//         cookie::get('key');
+//         cookie::forget('key');
+//         cashe::has('key')
+//          composer create-project laravel/laravel project
+
+//         doctor::whereBetween('regat', [fir,second])->get()
+//         config::get(constant NAMES)
+//         Model::connection()->enaibleQueryLog()
+//         $qlog= model::getQueryLog()
+//         Route::get('list', 'anything@list')
+//         php artisan make:provider ServicePr....
+//         doctor::whereBetween('field', ['date1', 'date2'])
+
+//         App\Http\Middleware\VerifyCsrfToken.php
+//         public $except=[
+//                 'rouee'
+//         ]
+
+//         }
+
+//         php artisan make:middleware UserMiddleware
+
+//         session()->put('key, 'value)
+//         session()->get('key')
+//         session()->forget('key')
+
+//         use SoftDeletes 
+//         protected $dates=[
+//                 'delete_at'
+//         ]
+//         $del = db::where(['dete'=>'value'])
+//         $del->delete() of softDeletes
+
+//         Cookies::put('key', 'value')
+//         Cookies::get('key')
+//         Cookies::forget('key')
+//         Cache::has('key')
+
+//         request()->route()->getActionMethod()
+
+//         request()->ip()
+
+//         if(request->hasFile('name')){
+//             $file= Storage::putFile('path', $ßrequest->'imgfield')    
+//         }
+
+
+
+//         doctor::insertOrUpdate([''=>''],[])
+//         SChema::hasTable('')
+//         Scheme::hasColumn('','')
+//         request()->route()->getName()
+//         protected $table= 'admin'
+//         if($request->ajax())
+//         if($request->has('email'))
+
+        
+
+// end
      
 }

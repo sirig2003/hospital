@@ -18,3 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// I added everything below
+// Route::group(['prefix'=>'V1', 'namespace'=>'App/Http/Contrller/Api/V1'], function{
+//     Route::apiResource('api1url', HomeController::class)
+// });
+
+
+// check
