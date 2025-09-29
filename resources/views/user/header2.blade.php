@@ -4,7 +4,7 @@
         <div class="row">
           <div class="col-sm-8 text-sm">
             <div class="site-info">
-              <a href="#"><span class="mai-call text-primary"></span> +234 7032442244 </a>
+              <a href="#"><span class="mai-call text-primary"></span> +1 905 325 3134 </a>
               <span class="divider">|</span>
               <a href="#"><span class="mai-mail text-primary"></span> sirig2003@gmail.com</a>
             </div>
@@ -95,4 +95,5 @@
           @endforeach     
     </div>
     @endif
+  
   
