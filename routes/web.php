@@ -17,6 +17,11 @@ use App\Http\Controllers\AdminController;
 
 //Route::get('/home', [HomeController::class, 'redirect'])->middleware('auth','verified');
 
+
+//Echo "web.php line 21";
+//start
+
+//end
 Route::get('/clear', function() {
 
     Artisan::call('cache:clear');
