@@ -1,0 +1,35 @@
+name: Publish Website to Main
+on:
+  push:
+    branches:
+      - main
+jobs:
+  FTP-Deploy-Action:
+    name: 🚀 Deploy website via FTP
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - name: 🐘 Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2.8"
+      - name: 📦 Install dependencies
+        run: |
+          composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.16.1'
+      - name: Install NPM Dependencies
+        run: npm install
+      - name: Build NPM Assets
+        run: npm run build
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
